@@ -14,19 +14,21 @@ def parser(x):
 	return datetime.strptime('190'+x, '%Y-%m')
 
 
-data_path = "E:/Career/ShU/shampoo.csv"
+data_path = 'E:\FARSCOPE\CDT project\ReserviorComputing\DeepCA---Hybrid-Deep-Learning-Cellular-Automata-Reservoir-master\ShangHai\shampoo.csv'
 
+# 原始数据
 series = read_csv(data_path, header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
 print(series.head())
-series.plot()
-pyplot.show()
 
 
+# 拟合数据
 series = read_csv(data_path, header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
 upsampled = series.resample('D')
 interpolated = upsampled.interpolate(method='spline', order=2)
 print(interpolated.head(32))
+series.plot()
 interpolated.plot()
+pyplot.legend(["Original Data", "Interpolated Data"], loc ="lower right")
 pyplot.show()
 
 
