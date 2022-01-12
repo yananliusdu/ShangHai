@@ -29,6 +29,7 @@ print(interpolated.head(32))
 series.plot()
 interpolated.plot()
 pyplot.legend(["Original Data", "Interpolated Data"], loc ="lower right")
+pyplot.grid()
 pyplot.show()
 
 
