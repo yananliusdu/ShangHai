@@ -46,7 +46,7 @@ x = [i for i in range(samples.size)]
 fit_linear = interp1d(x, samples, kind="linear")
 fit_cubic = interp1d(x, samples, kind='cubic')
 fit_quad = interp1d(x, samples, kind='quadratic')
-fit_lagrange = interpolate.lagrange(x, samples)
+fit_akima = interpolate.Akima1DInterpolator(x, samples)
 
 x_test = np.linspace(0,samples.size-1,1000)
 
@@ -58,8 +58,9 @@ plt.plot(x_test, fit_linear(x_test))
 plt.plot(x_test, fit_cubic(x_test))
 plt.plot(x_test, fit_quad(x_test))
 plt.plot(x_test, y_test)
+plt.plot(x_test, fit_akima(x_test))
 plt.legend(["Given Data", "Interpolation (Linear)", "Interpolation (Cubic) ",
-            "Interpolationo (Quad)", 'Interpolationo (Hermite)'], loc ="lower right")
+            "Interpolationo (Quad)", 'Interpolationo (Hermite)', 'Interpolation (Akima)'], loc ="lower right")
 plt.grid()
 plt.show()
 
