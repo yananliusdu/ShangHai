@@ -48,7 +48,7 @@ fit_cubic = interp1d(x, samples, kind='cubic')
 fit_quad = interp1d(x, samples, kind='quadratic')
 fit_akima = interpolate.Akima1DInterpolator(x, samples)
 
-x_test = np.linspace(0,samples.size-1,1000)
+x_test = np.linspace(0,samples.size-1,4000)
 
 # cubic Hermite interpolation
 y_test = interpolate.pchip_interpolate(x, samples, x_test)
